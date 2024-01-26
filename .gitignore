@@ -2,3 +2,5 @@
 __*
 *html
 *.config
+notified_jobs.txt
+.env
