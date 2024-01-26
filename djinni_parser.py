@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 
 def parser(html_input):
-    loaded_jobs = []
+    loaded_jobs = dict()
 
     if (not isinstance(html_input, str)) :
         raise Exception("Not of String type")
@@ -13,6 +13,6 @@ def parser(html_input):
         for job in jobs:
             key = job.text.strip().lower().replace(" ", "")
             value = job.text.strip()
-            loaded_jobs.append({key: value})
+            loaded_jobs[key] = value
 
     return loaded_jobs
