@@ -4,3 +4,4 @@ __*
 *.config
 notified_jobs.txt
 .env
+*.in
