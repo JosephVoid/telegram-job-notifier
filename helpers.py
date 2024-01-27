@@ -15,12 +15,12 @@ def getNotifiedId () -> list[str]:
     notified = []
     with open('notified_jobs.txt', 'r') as f:
         for _id in f.readlines():
-            notified.append(_id)
+            notified.append(_id.rstrip('\n'))
     return notified
 
 def setNotifiedId (_id):
     with open('notified_jobs.txt', 'a') as f:
-        f.writelines(_id)
+        f.writelines(_id+'\n')
     return True
 
 def check_bot ():
