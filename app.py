@@ -1,11 +1,12 @@
 import requests
-from djinni_parser import parser as dj_parser
+import feedparser
+from djinni_parser import Job, parser as dj_parser
 from helpers import getNotifiedId, getURLs, notify, setNotifiedId
 from dotenv import load_dotenv
 
 load_dotenv()
 
-def app ():
+def djinni ():
     urls = getURLs()
 
     resp = requests.get(
@@ -22,5 +23,12 @@ def app ():
     else :
         print("Request Error")
 
+def upwork ():
+    feed = feedparser.parse(getURLs().get("UPWORK"))
+    for job in feed['entries']:
+        job_id = job['title'].lower().replace(" ", "")
+        if (job_id not in getNotifiedId() and notify(job['title']+'\n'+job['link'])):
+                setNotifiedId(job_id)
 
-app()
+upwork()
+
