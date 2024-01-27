@@ -1,7 +1,13 @@
 from bs4 import BeautifulSoup
 
+class Job:
+    def __init__(self, id, title, link):
+        self.id = id
+        self.title = title
+        self.link = link
+
 def parser(html_input):
-    loaded_jobs = dict()
+    loaded_jobs = []
 
     if (not isinstance(html_input, str)) :
         raise Exception("Not of String type")
@@ -13,6 +19,7 @@ def parser(html_input):
         for job in jobs:
             key = job.text.strip().lower().replace(" ", "")
             value = job.text.strip()
-            loaded_jobs[key] = value
+            link = "https://djinni.co"+job['href']
+            loaded_jobs.append(Job(key, value, link))
 
     return loaded_jobs
