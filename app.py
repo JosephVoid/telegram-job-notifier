@@ -1,6 +1,6 @@
 import requests
 from djinni_parser import parser as dj_parser
-from helpers import check_bot, getNotifiedId, getURLs, notify, setNotifiedId
+from helpers import getNotifiedId, getURLs, notify, setNotifiedId
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -16,10 +16,9 @@ def app ():
 
     if (resp.status_code == 200) :
         djinni_jobs = dj_parser(resp.content.decode())
-        
-        for k, v in djinni_jobs.items():
-            if (k not in getNotifiedId() and notify(v)):
-                setNotifiedId(k)
+        for job in djinni_jobs:
+            if (job.id not in getNotifiedId() and notify(job.title+'\n'+job.link)):
+                setNotifiedId(job.id)
     else :
         print("Request Error")
 
