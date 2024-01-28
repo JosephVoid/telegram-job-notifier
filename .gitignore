@@ -5,3 +5,4 @@ __*
 notified_jobs.txt
 .env
 *.in
+exec.log

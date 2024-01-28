@@ -1,9 +1,14 @@
+import os
 from time import sleep
-from app import app
+from dotenv import load_dotenv
+from app import djinni, upwork
 
-def executer(fn, interval):
+load_dotenv()
+
+def executer(fns, interval):
     while 1:
-        fn()
+        for fn in fns:
+            fn()
         sleep(interval)
 
-executer(app, 3)
+executer([djinni, upwork], int(os.environ['MINS']) * 60)
