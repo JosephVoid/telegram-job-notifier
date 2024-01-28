@@ -4,11 +4,11 @@
 This python application helps poll job sites (Djinni & Upwork) for relevant jobs
 
 ### Installation
-1. Create `notified_jobs.txt`, `exec.log`, `.config` & `.env` files
+1. Create `notified_jobs.txt`, `.config` & `.env` files
 2. Insert your links (with appopriate query params and page) or rss in the .config file in the following format
 ```
     DJINNI ; https:\\djinni.com?job_type=remote&....
-    UPWORK_RSS ; https:\\upwork.com\rss
+    UPWORK ; https:\\upwork.com\rss
 ```
 3. Insert your token, chatid, and Polling minutes in the following format
 ```
@@ -21,7 +21,10 @@ This python application helps poll job sites (Djinni & Upwork) for relevant jobs
 ```
     pip install -r requirements.txt
 ```
-5. Then start the bot in the background with logging
+5. Then start the bot in the background
 ```
-    pythonw main.pyw >> exec.log
+    // Background
+    pythonw main.pyw
+    // Foreground
+    python main.pyw
 ```
