@@ -13,13 +13,13 @@ def getURLs ():
 
 def getNotifiedId () -> list[str]:
     notified = []
-    with open('notified_jobs.txt', 'r') as f:
+    with open('notified_jobs.txt', 'r', encoding = 'utf-8') as f:
         for _id in f.readlines():
             notified.append(_id.rstrip('\n'))
     return notified
 
 def setNotifiedId (_id):
-    with open('notified_jobs.txt', 'a') as f:
+    with open('notified_jobs.txt', 'a', encoding = 'utf-8') as f:
         f.writelines(_id+'\n')
     return True
 
