@@ -5,10 +5,12 @@ from app import djinni, upwork
 
 load_dotenv()
 
+
 def executer(fns, interval):
     while 1:
         for fn in fns:
             fn()
         sleep(interval)
 
-executer([djinni, upwork], int(os.environ['MINS']) * 60)
+
+executer([upwork], int(os.environ["MINS"]) * 60)
